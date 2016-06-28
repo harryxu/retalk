@@ -4,12 +4,8 @@
   "description": "A minimal skeleton for building testable React apps using Babel",
   "main": "src/main.js",
   "scripts": {
-    "postinstall": "npm run build",
-    "server": "node start.js",
-    "build": "webpack -p --progress --config webpack.production.config.js",
     "test": "nyc ava --fail-fast --verbose --require babel-register",
-    "coveralls": "nyc report --reporter=text-lcov | coveralls",
-    "clean": "rm build/app.js"
+    "coveralls": "nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {
     "type": "git",
@@ -40,6 +36,7 @@
     "css-loader": "^0.18.0",
     "enzyme": "^2.0.0",
     "extract-text-webpack-plugin": "^0.8.2",
+    "gulp": "^3.9.1",
     "nyc": "^5.6.0",
     "postcss-loader": "^0.6.0",
     "postcss-nested": "^1.0.0",
@@ -48,7 +45,11 @@
     "sinon": "^1.17.2",
     "style-loader": "^0.12.3",
     "webpack": "^1.12.14",
-    "webpack-dev-server": "^1.14.1"
+    "webpack-dev-server": "^1.14.1",
+    "webpack-stream": "^3.2.0",
+    "gulp-if": "^2.0.0",
+    "gulp-uglify": "^1.5.3",
+    "yargs": "^4.4.0"
   },
   "dependencies": {
     "babel-core": "^6.5.2",
