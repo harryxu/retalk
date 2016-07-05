@@ -1,7 +1,13 @@
 import { routerReducer as routing } from 'react-router-redux'
 import { combineReducers } from 'redux'
 
-function topic(state = [], action)
+
+function topicList(state = {}, action)
+{
+    
+}
+
+function topic(state = {}, action)
 {
     return state;
 }
@@ -12,7 +18,8 @@ function comment(state = {}, action)
 }
 
 const rootReducer = combineReducers({
-    topics: topic,
+    topic_list: topicList,
+    topic,
     comments: comment,
     routing
 })

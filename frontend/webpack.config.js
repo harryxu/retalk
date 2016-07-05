@@ -6,7 +6,7 @@ var path = require('path');
  * This is the Webpack configuration file for production.
  */
 module.exports = {
-    entry: './index',
+    entry: './src/index',
 
     output: {
         filename: 'app.js'

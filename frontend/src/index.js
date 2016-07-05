@@ -14,7 +14,12 @@ import rootReducer from './reducers'
 import routes from './routes'
 
 var initState = {
-    topics: [],
+    topic_list: {
+
+    },
+    topic: {
+
+    },
     comments: {
 
     }
