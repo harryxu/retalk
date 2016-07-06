@@ -6,10 +6,10 @@ var path = require('path');
  * This is the Webpack configuration file for production.
  */
 module.exports = {
-    entry: "./src/main",
+    entry: './src/index',
 
     output: {
-        filename: "app.js"
+        filename: 'app.js'
     },
 
     plugins: [
@@ -18,15 +18,16 @@ module.exports = {
 
     module: {
         loaders: [
-            { test: /\.jsx?$/, exclude: /node_modules/, loader: "babel-loader" }
+            {
+                test: /\.jsx?$/,
+                loader: "babel-loader",
+                exclude: /node_modules/,
+            }
         ]
     },
 
     resolve: {
-        extensions: ['', '.js', '.jsx', '.css'],
-        root: [
-            path.resolve('./src')
-        ]
+        extensions: ['', '.js', '.jsx', '.css']
     },
 
     postcss: [

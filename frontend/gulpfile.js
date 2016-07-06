@@ -23,7 +23,7 @@ gulp.task('react', function() {
         webpackConfig.devtool = 'source-map';
     }
 
-    return gulp.src('src/main.js')
+    return gulp.src('./src/index.js')
         .pipe(webpack(webpackConfig))
         .on('error', swallowError)
         .pipe(gulpif(argv.prod, uglify()))
@@ -31,7 +31,7 @@ gulp.task('react', function() {
 });
 
 gulp.task('watch', function() {
-    gulp.watch('./src/**/*.js', ['react']);
+    gulp.watch('./src/**/*.js', { interval: 500 }, ['react']);
 });
 
 gulp.task('default', ['watch']);
