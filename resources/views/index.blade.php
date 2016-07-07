@@ -16,6 +16,7 @@
 
   <script>
     var basePath = '{!! $basepath !!}';
+    var apiBase = '{!! $apibase !!}';
   </script>
 
   {!! Html::script('js/app.js') !!}
