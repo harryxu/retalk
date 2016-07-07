@@ -15,10 +15,12 @@ import routes from './routes'
 
 var initState = {
     topicList: {
+        fetching: true,
         topics:[]
     },
     topic: {
-
+        fetching: true,
+        topic: null
     },
     comments: {
 

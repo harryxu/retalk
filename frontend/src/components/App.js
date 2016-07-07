@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { Component } from 'react'
+import { Link, IndexLink } from 'react-router'
 
-import { Component } from 'react'
+import { path } from '../common/helper'
+
 
 export default class App extends Component {
 
@@ -8,10 +10,16 @@ export default class App extends Component {
         const { children } = this.props
 
         return (
-            <div>
-                <h1>Retalk system.</h1>
+            <div className="container">
+                <div className="header clearfix">
+                    <h3 className="text-muted">
+                        <IndexLink to={path()}>Retalk system</IndexLink>
+                    </h3>
+                </div>
 
-                {children}
+                <div className="row">
+                    {children}
+                </div>
             </div>
         )
     }

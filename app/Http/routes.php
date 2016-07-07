@@ -2,8 +2,6 @@
 
 use Dingo\Api\Routing\Router;
 
-Route::get('/', 'HomeController@index');
-
 /**
  * @var Dingo\Api\Routing\Router
  */
@@ -15,3 +13,5 @@ $api->version('v1', function(Router $api) {
     $api->get('auth/user', 'AuthController@user');
     $api->post('auth/login', 'AuthController@login');
 });
+
+Route::get('{catchall}', 'HomeController@index')->where('catchall', '(.*)');

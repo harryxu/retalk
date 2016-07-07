@@ -3,29 +3,32 @@ import { combineReducers } from 'redux'
 import * as actions from '../actions';
 
 
-function topicList(state = {
-    fetching: false,
-    topics: []
-}, action) {
-    switch (action.type) {
-        case actions.LIST_TOPICS:
-            if (action.fetching) {
-                return Object.assign({}, state, {
-                    topics: [],
-                    fetching: true
-                })
-            }
-            else {
-                action.data.fetching = false;
-                return Object.assign({}, state, action.data)
-            }
-        default:
-            return state
+function topicList(state = { topics: [], fetching: true }, action) {
+    if (action.type != actions.LIST_TOPICS) {
+        return state
+    }
+
+    if (action.fetching) {
+        return Object.assign({}, state, {
+            topics: [],
+            fetching: true
+        })
+    }
+    else {
+        action.data.fetching = false;
+        return Object.assign({}, state, action.data)
     }
 }
 
-function topic(state = {}, action)
+function topic(state = {topic: null, fetching: true}, action)
 {
+    if (action.type == actions.LOAD_TOPIC) {
+        return {
+            fetching: action.fetching,
+            topic: action.fetching ? null : action.data.topic
+        }
+    }
+
     return state;
 }
 

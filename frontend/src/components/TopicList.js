@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router'
 
 import { fetchTopics } from '../actions'
+import { path } from '../common/helper'
 
 export class TopicList extends Component {
 
@@ -16,7 +18,7 @@ export class TopicList extends Component {
                 {fetching ? '正在加载...' :
                     <ul>
                         {topics.map((topic, i) =>
-                            <li key={i}>{topic.title}</li>
+                            <li key={i}><Link to={path(`t/${topic.id}`)}>{topic.title}</Link></li>
                         )}
                     </ul>
 
