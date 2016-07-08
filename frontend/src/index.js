@@ -24,6 +24,9 @@ var initState = {
     },
     comments: {
 
+    },
+    user: {
+        name: null
     }
 }
 

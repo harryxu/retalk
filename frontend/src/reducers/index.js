@@ -37,7 +37,13 @@ function comment(state = {}, action)
     return state;
 }
 
+function user(state = {name:null}, action)
+{
+    return state;
+}
+
 const rootReducer = combineReducers({
+    user,
     topicList,
     topic,
     comments: comment,
