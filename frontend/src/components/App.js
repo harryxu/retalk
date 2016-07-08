@@ -13,26 +13,27 @@ export class App extends Component {
         return (
             <div className="container">
                 <div className="header clearfix">
-                    <nav className="navbar navbar-default">
+                    <nav className="navbar navbar-info">
                         <div className="container-fluid">
                             <div class="navbar-header">
                                 <IndexLink className="navbar-brand" to={path()}>Retalk system</IndexLink>
                             </div>
                             <div className="collapse navbar-collapse">
+                                <p className="navbar-text navbar-right">
                                 {user.name
-                                    ? <p className="navbar-text navbar-right">{user.name} |
-                                        <Link to={path('auth/logout')}>退出</Link></p>
-                                    : <div className="pull-right">
-                                        <Link to={path('auth/login')} className="btn btn-primary navbar-btn">登录</Link>
-                                    </div>
+                                    ? (user.name |<Link to={path('auth/logout')}>退出</Link>)
+                                    : <Link to={path('auth/login')}>登录</Link>
                                 }
+                                </p>
                             </div>
                         </div>
                     </nav>
                 </div>
 
                 <div className="row">
-                    {children}
+                    <div className="col-md-12">
+                        {children}
+                    </div>
                 </div>
             </div>
         )

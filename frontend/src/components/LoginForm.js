@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { IndexLink } from 'react-router'
 
+import { path } from '../common/helper'
 import { signUserIn } from '../actions'
 
 export class LoginForm extends Component {
@@ -14,14 +16,25 @@ export class LoginForm extends Component {
 
     render() {
         return (
-            <form className="col-lg-6">
-                <h2>登录</h2>
-                <div className="form-group">
-                    <label for="usernameInput">用户名</label>
-                    <input ref="usernameInput" type="text" className="form-control" id="usernameInput" placeholder="请输入用户名" />
-                </div>
-                <button onClick={this.handleLogin.bind(this)} type="button" className="btn btn-primary">登录</button>
-            </form>
+            <div className="well">
+                <form className="form-horizontal">
+                    <fieldset>
+                        <legend>登录</legend>
+                        <div className="form-group">
+                            <label className="control-label col-md-2" htmlFor="usernameInput">用户名</label>
+                            <div className="col-md-10">
+                                <input ref="usernameInput" type="text" className="form-control" id="usernameInput" placeholder="请输入用户名" />
+                            </div>
+                        </div>
+                        <div className="form-group">
+                            <div className="col-md-10 col-md-offset-2">
+                                <IndexLink to={path()} className="btn btn-default">取消</IndexLink>
+                                <button onClick={this.handleLogin.bind(this)} type="button" className="btn btn-primary">登录</button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
         )
     }
 }

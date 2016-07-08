@@ -6,7 +6,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-  <link href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/bootstrap-material-design/0.5.10/css/bootstrap-material-design.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/bootstrap-material-design/0.5.10/css/ripples.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -14,11 +15,16 @@
 
   </div>
 
+  <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+  <script src="//cdn.bootcss.com/bootstrap-material-design/0.5.10/js/ripples.min.js"></script>
+  <script src="//cdn.bootcss.com/bootstrap-material-design/0.5.10/js/material.min.js"></script>
   {!! Html::script('js/vendor.bundle.js') !!}
 
   <script>
     var basePath = '{!! $basepath !!}';
     var apiBase = '{!! $apibase !!}';
+
+    $.material.init()
   </script>
 
   {!! Html::script('js/app.js') !!}

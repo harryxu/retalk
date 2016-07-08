@@ -17,11 +17,11 @@ export function signUserIn(username) {
             body: form
         })
             .then(response => response.json())
-            .then(json => )
+            .then(json => dispatch(receiveUser(json)))
     }
 }
 
-function recevieUser(data) {
+function receiveUser(data) {
 
 }
 

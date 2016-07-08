@@ -16,7 +16,7 @@ export class Topic extends Component {
         const { fetching, topic } = this.props
 
         return (
-            <div className="col-lg-6">
+            <div className="well">
                 {fetching ? <h2>加载中...</h2> :
                     <div className="topic">
                         <h2>{topic.title}</h2>

@@ -14,7 +14,7 @@ export class TopicList extends Component {
     render() {
         const { fetching, topics } = this.props
         return (
-            <div>
+            <div className="well">
                 {fetching ? '正在加载...' :
                     <ul>
                         {topics.map((topic, i) =>
