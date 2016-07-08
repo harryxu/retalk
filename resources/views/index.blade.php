@@ -14,6 +14,8 @@
 
   </div>
 
+  {!! Html::script('js/vendor.bundle.js') !!}
+
   <script>
     var basePath = '{!! $basepath !!}';
     var apiBase = '{!! $apibase !!}';

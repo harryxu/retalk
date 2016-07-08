@@ -1,17 +1,26 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
+import { signUserIn } from '../actions'
+
 export class LoginForm extends Component {
 
-    render () {
+    handleLogin() {
+        var username = this.refs.usernameInput.value;
+        if (username.length > 0) {
+            this.props.dispatch(signUserIn(username))
+        }
+    }
+
+    render() {
         return (
             <form className="col-lg-6">
                 <h2>登录</h2>
                 <div className="form-group">
                     <label for="usernameInput">用户名</label>
-                    <input type="text" className="form-control" id="usernameInput" placeholder="请输入用户名" />
+                    <input ref="usernameInput" type="text" className="form-control" id="usernameInput" placeholder="请输入用户名" />
                 </div>
-                <button type="button" className="btn btn-primary">登录</button>
+                <button onClick={this.handleLogin.bind(this)} type="button" className="btn btn-primary">登录</button>
             </form>
         )
     }

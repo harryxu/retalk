@@ -6,21 +6,35 @@ var path = require('path');
  * This is the Webpack configuration file for production.
  */
 module.exports = {
-    entry: './src/index',
+    entry: {
+        app: './src/index',
+        vendor: [
+            'history',
+            'isomorphic-fetch',
+            'react',
+            'react-dom',
+            'redux',
+            'redux-thunk',
+            'react-redux',
+            'react-router',
+            'react-router-redux',
+            'babel-polyfill'
+        ]
+    },
 
     output: {
         filename: 'app.js'
     },
 
     plugins: [
-        new ExtractTextPlugin('style.css', { allChunks: true })
+        new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.bundle.js'),
     ],
 
     module: {
         loaders: [
             {
                 test: /\.jsx?$/,
-                loader: "babel-loader",
+                loaders: ['babel'],
                 exclude: /node_modules/
             }
         ]
