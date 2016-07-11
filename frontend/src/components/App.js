@@ -3,9 +3,14 @@ import { Link, IndexLink } from 'react-router'
 import { connect } from 'react-redux'
 
 import { path } from '../common/helper'
+import { loadUser } from '../actions'
 
 
 export class App extends Component {
+
+    componentDidMount() {
+        this.props.dispatch(loadUser())
+    }
 
     render() {
         const { children, user } = this.props
@@ -21,8 +26,8 @@ export class App extends Component {
                             <div className="collapse navbar-collapse">
                                 <p className="navbar-text navbar-right">
                                 {user.name
-                                    ? (user.name |<Link to={path('auth/logout')}>退出</Link>)
-                                    : <Link to={path('auth/login')}>登录</Link>
+                                    ? <span>{user.name} | <Link to={path('auth/logout')} className="navbar-link">退出</Link></span>
+                                    : <Link className="navbar-link" to={path('auth/login')}>登录</Link>
                                 }
                                 </p>
                             </div>

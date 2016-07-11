@@ -6,8 +6,7 @@ use Dingo\Api\Routing\Router;
  * @var Dingo\Api\Routing\Router
  */
 $api = app(Router::class);
-
-$api->version('v1', function(Router $api) {
+$api->version('v1', ['middleware' => ['web']], function(Router $api) {
     $api->resource('topic', \App\Http\Controllers\TopicController::class);
 
     $api->get('auth/user', 'App\Http\Controllers\AuthController@user');

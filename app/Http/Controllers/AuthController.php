@@ -3,22 +3,21 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Session\Store as Session;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 
 class AuthController extends Controller
 {
 
-    public function user(Session $session)
+    public function user(Request $request)
     {
-        return $session->get('user', ['name' => null]);
+        return $request->session()->get('user', ['name' => null]);
     }
 
-    public function login(Request $request, Session $session)
+    public function login(Request $request)
     {
         if ($request->has('username')) {
-            $session->set('user', ['name' => $request->get('username')]);
-            return $session->get('user');
+            $request->session()->put('user', ['name' => $request->get('username')]);
+            return $request->session()->get('user');
         }
 
         throw new BadRequestHttpException('登录信息无效');

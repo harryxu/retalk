@@ -1,6 +1,6 @@
-import fetch from 'isomorphic-fetch'
+import { push } from 'react-router-redux'
 
-import { apiUrl } from '../common/helper'
+import { path, apiUrl } from '../common/helper'
 
 export const SIGN_USER_IN = 'SIGN_USER_IN'
 export const LOAD_USER = 'LOAD_USER'
@@ -10,19 +10,30 @@ export const LOAD_TOPIC = 'LOAD_TOPIC'
 
 export function signUserIn(username) {
     return (dispatch, getState) => {
-        var form = new FormData()
-        form.append('username', username)
-        return fetch(apiUrl('auth/login'), {
+        return $.ajax(apiUrl('auth/login'), {
             method: 'POST',
-            body: form
-        })
-            .then(response => response.json())
-            .then(json => dispatch(receiveUser(json)))
+            type: 'json',
+            data: {username}
+        }).done(json =>  {
+                dispatch(receiveUser(json))
+                dispatch(push(path()))
+            })
     }
 }
 
-function receiveUser(data) {
+export function loadUser() {
+    return (dispatch, getStatus) => {
+        return $.getJSON(apiUrl('auth/user'))
+            .done(json => dispatch(receiveUser(json)))
+    }
+}
 
+export function receiveUser(data) {
+    return {
+        type: LOAD_USER,
+        fetching: false,
+        data
+    }
 }
 
 
@@ -37,9 +48,8 @@ export function fetchTopics() {
             fetching: true
         })
 
-        return fetch(apiUrl('topic'))
-            .then(response => response.json())
-            .then(json => dispatch(receiveTopics(json)))
+        return $.getJSON(apiUrl('topic'))
+            .done(json => dispatch(receiveTopics(json)))
     }
 }
 
@@ -63,8 +73,7 @@ export function loadTopic(id) {
             fetching: true
         })
 
-        return fetch(apiUrl(`topic/${id}`))
-            .then(response => response.json())
+        return $.getJSON(apiUrl(`topic/${id}`))
             .then(json => dispatch(receiveTopic(json)))
     }
 }
