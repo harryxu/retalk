@@ -7,7 +7,9 @@ import { signUserIn } from '../actions'
 
 export class LoginForm extends Component {
 
-    handleLogin() {
+    handleLogin(event) {
+        event.preventDefault()
+
         var username = this.refs.usernameInput.value;
         if (username.length > 0) {
             this.props.dispatch(signUserIn(username))
@@ -17,7 +19,7 @@ export class LoginForm extends Component {
     render() {
         return (
             <div className="well">
-                <form className="form-horizontal">
+                <form className="form-horizontal" onSubmit={this.handleLogin.bind(this)}>
                     <fieldset>
                         <legend>登录</legend>
                         <div className="form-group">
@@ -29,7 +31,7 @@ export class LoginForm extends Component {
                         <div className="form-group">
                             <div className="col-md-10 col-md-offset-2">
                                 <IndexLink to={path()} className="btn btn-default">取消</IndexLink>
-                                <button onClick={this.handleLogin.bind(this)} type="button" className="btn btn-primary">登录</button>
+                                <button type="submit" className="btn btn-primary">登录</button>
                             </div>
                         </div>
                     </fieldset>

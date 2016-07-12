@@ -16,7 +16,9 @@ export class TopicForm extends Component {
         }
     }
 
-    handlePost() {
+    handlePost(event) {
+        event.preventDefault()
+
         if (this.refs.titleInput.value.length > 0) {
             this.setState({busy: true})
 
@@ -42,7 +44,7 @@ export class TopicForm extends Component {
     render() {
         return (
             <div className="well">
-                <form className="form-horizontal">
+                <form className="form-horizontal" onSubmit={this.handlePost.bind(this)} >
                     <fieldset>
                         <legend>发布主题</legend>
 
@@ -63,7 +65,7 @@ export class TopicForm extends Component {
                         <div className="form-group">
                             <div className="col-md-10 col-md-offset-2">
                                 <IndexLink to={path()} className="btn btn-default">取消</IndexLink>
-                                <button onClick={this.handlePost.bind(this)} disabled={this.state.busy} type="button" className="btn btn-primary">发布</button>
+                                <button disabled={this.state.busy} type="submit" className="btn btn-primary">发布</button>
                             </div>
                         </div>
                     </fieldset>

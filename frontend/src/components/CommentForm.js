@@ -13,7 +13,9 @@ export class CommentForm extends Component {
         }
     }
 
-    handlePost() {
+    handlePost(event) {
+        event.preventDefault()
+
         var content = this.refs.commentInput.value
         if (content.length > 0) {
             this.setState({busy: true})
@@ -31,7 +33,7 @@ export class CommentForm extends Component {
     render() {
         return (
             <div className="well">
-                <form className="form-horizontal">
+                <form className="form-horizontal" onSubmit={this.handlePost.bind(this)}>
                     <fieldset>
                         <legend>发表评论</legend>
                     </fieldset>
@@ -44,7 +46,7 @@ export class CommentForm extends Component {
 
                     <div className="form-group">
                         <div className="col-md-10">
-                            <button onClick={this.handlePost.bind(this)} disabled={this.state.busy} type="button" className="btn btn-primary">发布</button>
+                            <button disabled={this.state.busy} type="submit" className="btn btn-primary">发布</button>
                         </div>
                     </div>
                 </form>
