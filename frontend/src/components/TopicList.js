@@ -26,7 +26,7 @@ export class TopicList extends Component {
                             {topics.map((topic, i) =>
                                 <li key={i}>
                                     <Link to={path(`t/${topic.id}`)}>{topic.title}</Link>
-                                    <span className="pull-right">{topic.username}@{topic.created_at}</span>
+                                    <span className="pull-right">{topic.username}  {topic.created_at}</span>
                                 </li>
                             )}
                         </ul>

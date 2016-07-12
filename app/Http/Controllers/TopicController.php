@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Topic;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -16,7 +17,7 @@ class TopicController extends Controller
      */
     public function index()
     {
-        return Topic::orderBy('updated_at', 'desc')->get();
+        return Topic::orderBy('last_reply_at', 'desc')->get();
     }
 
     /**
@@ -31,6 +32,7 @@ class TopicController extends Controller
         $data = $request->all();
         $topic = new Topic($data);
         $topic->username = $user['name'];
+        $topic->last_reply_at = Carbon::now();
         $topic->save();
 
         return $topic;

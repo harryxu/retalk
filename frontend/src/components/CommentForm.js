@@ -38,7 +38,7 @@ export class CommentForm extends Component {
 
                     <div className="form-group">
                         <div className="col-md-12">
-                            <textarea ref="commentInput" rows="3" className="form-control" id="commentInput" ></textarea>
+                            <textarea ref="commentInput" rows="3" placeholder="请输入评论内容" className="form-control" id="commentInput" ></textarea>
                         </div>
                     </div>
 
