@@ -101,3 +101,20 @@ export function postTopic(data) {
             .done(response => dispatch(push(path(`t/${response.topic.id}`))))
     }
 }
+
+export function loadComment(topicId) {
+    return (dispatch, getstate) => {
+        return $.getJSON(apiUrl(`comment?tid=${topicId}`))
+    }
+}
+
+export function postComment(topicId, comment) {
+    return (dispatch, getstate) => {
+        return $.ajax(apiUrl('comment'), {
+                method: 'post',
+                dataType: 'json',
+                data: {tid: topicId, comment}
+            })
+            .done(response => dispatch(loadComment(topicId)))
+    }
+}

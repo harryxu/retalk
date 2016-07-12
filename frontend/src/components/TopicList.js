@@ -20,20 +20,19 @@ export class TopicList extends Component {
             <div>
                 <Link to={postUrl} className="btn btn-raised btn-primary">发帖</Link>
 
-
                 <div className="well">
-                {fetching ? '正在加载...' :
-                    <ul>
-                        {topics.map((topic, i) =>
-                            <li key={i}>
-                                <Link to={path(`t/${topic.id}`)}>{topic.title}</Link>
-                                <span className="pull-right">{topic.username}</span>
-                            </li>
-                        )}
-                    </ul>
+                    {fetching ? '正在加载...' :
+                        <ul>
+                            {topics.map((topic, i) =>
+                                <li key={i}>
+                                    <Link to={path(`t/${topic.id}`)}>{topic.title}</Link>
+                                    <span className="pull-right">{topic.username}</span>
+                                </li>
+                            )}
+                        </ul>
 
-                }
-            </div>
+                    }
+                </div>
             </div>
         )
     }

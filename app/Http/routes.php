@@ -8,6 +8,7 @@ use Dingo\Api\Routing\Router;
 $api = app(Router::class);
 $api->version('v1', ['middleware' => ['web']], function(Router $api) {
     $api->resource('topic', \App\Http\Controllers\TopicController::class);
+    $api->resource('comment', \App\Http\Controllers\ReplyController::class);
 
     $api->get('auth/user', 'App\Http\Controllers\AuthController@user');
     $api->post('auth/login', 'App\Http\Controllers\AuthController@login');
