@@ -21,12 +21,19 @@ export class CommentForm extends Component {
         }
     }
 
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.comments[this.props.tid] && !nextProps.comments[this.props.tid].fetching) {
+            this.setState({busy: false})
+            this.refs.commentInput.value = ''
+        }
+    }
+
     render() {
         return (
             <div className="well">
                 <form className="form-horizontal">
                     <fieldset>
-                        <legend>评论</legend>
+                        <legend>发表评论</legend>
                     </fieldset>
 
                     <div className="form-group">
@@ -46,4 +53,10 @@ export class CommentForm extends Component {
     }
 }
 
-export default connect()(CommentForm)
+function mapStateToProps(state) {
+    return {
+        comments: state.comments
+    }
+}
+
+export default connect(mapStateToProps)(CommentForm)

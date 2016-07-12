@@ -32,8 +32,26 @@ function topic(state = {topic: null, fetching: true}, action)
     return state;
 }
 
-function comment(state = {}, action)
+function commentData(state = {}, action)
 {
+    if (action.type == actions.LIST_COMMENTS) {
+        if (action.fetching) {
+            return Object.assign({}, state, {
+                [action.topicId]: {
+                    fetching: true,
+                    comments: []
+                }
+            })
+        }
+        else {
+            return Object.assign({}, state, {
+                [action.topicId]: {
+                    fetching: false,
+                    comments: Array.isArray(action.data) ? [] : action.data.replies
+                }
+            })
+        }
+    }
     return state;
 }
 
@@ -51,7 +69,7 @@ const rootReducer = combineReducers({
     user,
     topicList,
     topic,
-    comments: comment,
+    comments: commentData,
     routing
 })
 

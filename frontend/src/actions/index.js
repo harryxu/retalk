@@ -8,6 +8,8 @@ export const LOAD_USER = 'LOAD_USER'
 export const LIST_TOPICS = 'LIST_TOPICS'
 export const LOAD_TOPIC = 'LOAD_TOPIC'
 
+export const LIST_COMMENTS = 'LIST_COMMENTS'
+
 export function signUserIn(username) {
     return (dispatch, getState) => {
         return $.ajax(apiUrl('auth/login'), {
@@ -102,12 +104,37 @@ export function postTopic(data) {
     }
 }
 
-export function loadComment(topicId) {
+/**
+ * 加载评论
+ * @param topicId
+ * @returns {function()}
+ */
+export function fetchComments(topicId) {
     return (dispatch, getstate) => {
+        dispatch({
+            type: LIST_COMMENTS,
+            fetching: true
+        })
         return $.getJSON(apiUrl(`comment?tid=${topicId}`))
+            .done(data => dispatch(receiveComments(topicId, data)))
     }
 }
 
+export function receiveComments(topicId, data) {
+    return {
+        type: LIST_COMMENTS,
+        fetching: false,
+        topicId,
+        data
+    }
+}
+
+/**
+ * 发评论
+ * @param topicId
+ * @param comment
+ * @returns {function()}
+ */
 export function postComment(topicId, comment) {
     return (dispatch, getstate) => {
         return $.ajax(apiUrl('comment'), {
@@ -115,6 +142,6 @@ export function postComment(topicId, comment) {
                 dataType: 'json',
                 data: {tid: topicId, comment}
             })
-            .done(response => dispatch(loadComment(topicId)))
+            .done(response => dispatch(fetchComments(topicId)))
     }
 }

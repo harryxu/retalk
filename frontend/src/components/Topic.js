@@ -4,6 +4,7 @@ import Remarkable from 'remarkable'
 
 import { loadTopic } from '../actions'
 import CommentForm from '../components/CommentForm'
+import CommentList from '../components/CommentList'
 
 export class Topic extends Component {
 
@@ -30,7 +31,7 @@ export class Topic extends Component {
                         <div className="topic">
                             <div className="clearfix">
                                 <h2 className="pull-left">{topic.title}</h2>
-                                <span className="pull-right">{topic.username}</span>
+                                <span className="pull-right">{topic.username}@{topic.created_at}</span>
                             </div>
                             <div className="body">
                                 <div dangerouslySetInnerHTML={this.rawMarkup(topic.content)} />
@@ -38,6 +39,8 @@ export class Topic extends Component {
                         </div>
                     }
                 </div>
+
+                { !fetching && <CommentList tid={topic.id} /> }
 
                 { (!fetching && user.name) && <CommentForm tid={topic.id} /> }
             </div>
