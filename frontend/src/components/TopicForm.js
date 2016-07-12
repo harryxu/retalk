@@ -17,12 +17,14 @@ export class TopicForm extends Component {
     }
 
     handlePost() {
-        this.setState({busy: true})
+        if (this.refs.titleInput.value.length > 0) {
+            this.setState({busy: true})
 
-        this.props.dispatch(postTopic({
-            title: this.refs.titleInput.value,
-            content: this.refs.bodyInput.value
-        }))
+            this.props.dispatch(postTopic({
+                title: this.refs.titleInput.value,
+                content: this.refs.bodyInput.value
+            }))
+        }
     }
 
     componentWillMount() {
