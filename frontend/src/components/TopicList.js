@@ -12,11 +12,13 @@ export class TopicList extends Component {
     }
 
     render() {
-        const { fetching, topics } = this.props
+        const { fetching, topics, user } = this.props
+
+        var postUrl = user.name ? path('t/post') : path('auth/login')
+
         return (
             <div>
-
-                <Link to={path('t/post')} className="btn btn-raised btn-primary">发帖</Link>
+                <Link to={postUrl} className="btn btn-raised btn-primary">发帖</Link>
 
 
                 <div className="well">
@@ -38,7 +40,10 @@ export class TopicList extends Component {
 }
 
 function mapStateToProps(state) {
-    return state.topicList;
+    return {
+        topics: state.topicList.topics,
+        user: state.user
+    }
 }
 
 export default connect(mapStateToProps)(TopicList)

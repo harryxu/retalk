@@ -25,9 +25,10 @@ export class App extends Component {
                             </div>
                             <div className="collapse navbar-collapse">
                                 <p className="navbar-text navbar-right">
-                                {user.name
-                                    ? <span>{user.name} | <Link to={path('auth/logout')} className="navbar-link">退出</Link></span>
-                                    : <Link className="navbar-link" to={path('auth/login')}>登录</Link>
+                                    {user.fetching ? <span>...</span>
+                                        : user.name
+                                            ? <span>{user.name} | <a href={path('auth/logout')} className="navbar-link">退出</a></span>
+                                            : <Link className="navbar-link" to={path('auth/login')}>登录</Link>
                                 }
                                 </p>
                             </div>

@@ -26,6 +26,7 @@ var initState = {
 
     },
     user: {
+        fetching: true,
         name: null
     }
 }

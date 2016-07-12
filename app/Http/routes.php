@@ -13,4 +13,9 @@ $api->version('v1', ['middleware' => ['web']], function(Router $api) {
     $api->post('auth/login', 'App\Http\Controllers\AuthController@login');
 });
 
+Route::get('auth/logout', function() {
+    Session::flush();
+    return Redirect::to('/');
+});
+
 Route::get('{catchall}', 'HomeController@index')->where('catchall', '(.*)');

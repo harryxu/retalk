@@ -40,7 +40,9 @@ function comment(state = {}, action)
 function user(state = {name:null}, action)
 {
     if (action.type == actions.LOAD_USER) {
-        return action.data;
+        return Object.assign({}, state, action.data, {
+            fetching: false
+        })
     }
     return state;
 }

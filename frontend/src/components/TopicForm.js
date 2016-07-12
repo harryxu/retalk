@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { IndexLink } from 'react-router'
 import { connect } from 'react-redux'
+import { push } from 'react-router-redux'
 
 import { postTopic } from '../actions'
 import { path } from '../common/helper'
@@ -22,6 +23,18 @@ export class TopicForm extends Component {
             title: this.refs.titleInput.value,
             content: this.refs.bodyInput.value
         }))
+    }
+
+    componentWillMount() {
+        if (!this.props.user.fetching && !this.props.user.name) {
+            this.props.dispatch(push(path('auth/login')))
+        }
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (!nextProps.user.fetching && !nextProps.user.name) {
+            this.props.dispatch(push(path('auth/login')))
+        }
     }
 
     render() {
@@ -58,5 +71,10 @@ export class TopicForm extends Component {
     }
 }
 
+function mapStateToProps(state) {
+    return {
+        user: state.user
+    }
+}
 
-export default connect()(TopicForm)
+export default connect(mapStateToProps)(TopicForm)
