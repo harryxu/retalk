@@ -23,7 +23,10 @@ export class TopicList extends Component {
                 {fetching ? '正在加载...' :
                     <ul>
                         {topics.map((topic, i) =>
-                            <li key={i}><Link to={path(`t/${topic.id}`)}>{topic.title}</Link></li>
+                            <li key={i}>
+                                <Link to={path(`t/${topic.id}`)}>{topic.title}</Link>
+                                <span className="pull-right">{topic.username}</span>
+                            </li>
                         )}
                     </ul>
 

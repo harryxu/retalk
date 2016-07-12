@@ -34,7 +34,7 @@ export class TopicForm extends Component {
                         <div className="form-group">
                             <label className="control-label col-md-2" htmlFor="titleInput">标题</label>
                             <div className="col-md-10">
-                                <input ref="titleInput" type="text" className="form-control" id="titleInput" />
+                                <input ref="titleInput" autoFocus={true} type="text" className="form-control" id="titleInput" />
                             </div>
                         </div>
 

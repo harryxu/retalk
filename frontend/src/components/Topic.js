@@ -26,7 +26,10 @@ export class Topic extends Component {
             <div className="well">
                 {fetching ? <h2>加载中...</h2> :
                     <div className="topic">
-                        <h2>{topic.title}</h2>
+                        <div className="clearfix">
+                            <h2 className="pull-left">{topic.title}</h2>
+                            <span className="pull-right">{topic.username}</span>
+                        </div>
                         <div className="body">
                             <div dangerouslySetInnerHTML={this.rawMarkup(topic.content)} />
                         </div>

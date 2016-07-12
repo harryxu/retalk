@@ -23,7 +23,7 @@ export class LoginForm extends Component {
                         <div className="form-group">
                             <label className="control-label col-md-2" htmlFor="usernameInput">用户名</label>
                             <div className="col-md-10">
-                                <input ref="usernameInput" type="text" className="form-control" id="usernameInput" placeholder="请输入用户名" />
+                                <input ref="usernameInput" autoFocus={true} type="text" className="form-control" id="usernameInput" placeholder="请输入用户名" />
                             </div>
                         </div>
                         <div className="form-group">
