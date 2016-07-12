@@ -12,7 +12,7 @@ export function signUserIn(username) {
     return (dispatch, getState) => {
         return $.ajax(apiUrl('auth/login'), {
             method: 'POST',
-            type: 'json',
+            dataType: 'json',
             data: {username}
         }).done(json =>  {
                 dispatch(receiveUser(json))
@@ -86,3 +86,18 @@ export function receiveTopic(data) {
     }
 }
 
+/**
+ * 发布新帖
+ * @param data
+ * @returns {function()}
+ */
+export function postTopic(data) {
+    return (dispatch, getState) => {
+        return $.ajax(apiUrl('topic'), {
+            method: 'POST',
+            dataType: 'json',
+            data: data
+        })
+            .done(response => dispatch(push(path(`t/${response.topic.id}`))))
+    }
+}

@@ -3,6 +3,7 @@ import { Route, IndexRoute } from 'react-router'
 import App from './components/App'
 import TopicList from './components/TopicList'
 import Topic from './components/Topic'
+import TopicForm from './components/TopicForm'
 import LoginForm from './components/LoginForm'
 import { path } from './common/helper'
 
@@ -10,6 +11,7 @@ export default (
     <Route path={path()} component={App}>
         <IndexRoute component={TopicList} />
         <Route path={path('auth/login')} component={LoginForm} />
+        <Route path={path('t/post')} component={TopicForm} />
         <Route path={path('t/:id')} component={Topic}/>
     </Route>
 )

@@ -27,7 +27,11 @@ class TopicController extends Controller
      */
     public function store(Request $request)
     {
-        $topic = Topic::create($request->all());
+        $user = $request->session()->get('user');
+        $data = $request->all();
+        $topic = new Topic($data);
+        $topic->username = $user['name'];
+        $topic->save();
 
         return $topic;
     }

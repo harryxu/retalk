@@ -14,7 +14,12 @@ export class TopicList extends Component {
     render() {
         const { fetching, topics } = this.props
         return (
-            <div className="well">
+            <div>
+
+                <Link to={path('t/post')} className="btn btn-raised btn-primary">发帖</Link>
+
+
+                <div className="well">
                 {fetching ? '正在加载...' :
                     <ul>
                         {topics.map((topic, i) =>
@@ -23,6 +28,7 @@ export class TopicList extends Component {
                     </ul>
 
                 }
+            </div>
             </div>
         )
     }

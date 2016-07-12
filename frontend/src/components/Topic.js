@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import Remarkable from 'remarkable'
 
 import { loadTopic } from '../actions'
 
@@ -11,6 +12,12 @@ export class Topic extends Component {
         }
     }
 
+    rawMarkup(str) {
+        var md = new Remarkable()
+        var rawMarkup = md.render(str);
+        return { __html: rawMarkup };
+    }
+
     render() {
 
         const { fetching, topic } = this.props
@@ -20,7 +27,9 @@ export class Topic extends Component {
                 {fetching ? <h2>加载中...</h2> :
                     <div className="topic">
                         <h2>{topic.title}</h2>
-                        <div className="body">{topic.content}</div>
+                        <div className="body">
+                            <div dangerouslySetInnerHTML={this.rawMarkup(topic.content)} />
+                        </div>
                     </div>
                 }
             </div>
