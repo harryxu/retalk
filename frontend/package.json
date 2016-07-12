@@ -1,28 +1,9 @@
 {
-  "name": "essential-react",
-  "version": "0.5.0",
-  "description": "A minimal skeleton for building testable React apps using Babel",
-  "main": "src/main.js",
+  "private": true,
+  "main": "src/index.js",
   "scripts": {
-    "test": "nyc ava --fail-fast --verbose --require babel-register",
-    "coveralls": "nyc report --reporter=text-lcov | coveralls"
+    "build": "NODE_ENV=production gulp react"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/pheuter/essential-react.git"
-  },
-  "keywords": [
-    "skeleton",
-    "template",
-    "react",
-    "quickstart"
-  ],
-  "author": "Mark Fayngersh",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/pheuter/essential-react/issues"
-  },
-  "homepage": "https://github.com/pheuter/essential-react",
   "devDependencies": {
     "babel-core": "^6.5.2",
     "babel-loader": "^6.2.4",
@@ -31,11 +12,10 @@
     "babel-preset-stage-0": "^6.5.0",
     "babel-register": "^6.5.2",
     "gulp": "^3.9.1",
+    "gulp-if": "^2.0.1",
+    "gulp-uglify": "^1.5.4",
     "webpack": "^1.12.14",
-    "webpack-stream": "^3.2.0",
-    "gulp-if": "^2.0.0",
-    "gulp-uglify": "^1.5.3",
-    "yargs": "^4.4.0"
+    "webpack-stream": "^3.2.0"
   },
   "dependencies": {
     "babel-polyfill": "^6.5.0",

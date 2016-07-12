@@ -4,7 +4,8 @@ var webpackConfig = require('./webpack.config.js');
 
 var gulpif = require('gulp-if');
 var uglify = require('gulp-uglify');
-var argv = require('yargs').argv;
+
+var env = process.env.NODE_ENV;
 
 /**
  * http://stackoverflow.com/a/23973536/157811
@@ -18,7 +19,7 @@ function swallowError (error) {
 
 gulp.task('react', function() {
 
-    if (!argv.prod) {
+    if (env != 'production') {
         // dev options
         webpackConfig.devtool = 'source-map';
     }
@@ -26,7 +27,7 @@ gulp.task('react', function() {
     return gulp.src('./src/index.js')
         .pipe(webpack(webpackConfig))
         .on('error', swallowError)
-        .pipe(gulpif(argv.prod, uglify()))
+        .pipe(gulpif(env == 'production', uglify()))
         .pipe(gulp.dest('../public/js'));
 });
 
