@@ -16,7 +16,8 @@ module.exports = {
             'redux-thunk',
             'react-redux',
             'react-router',
-            'react-router-redux'
+            'react-router-redux',
+            'remarkable'
         ]
     },
 

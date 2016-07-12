@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import Remarkable from 'remarkable'
 
 import { fetchComments } from '../actions'
 
@@ -7,6 +8,14 @@ export class CommentList extends Component {
 
     componentDidMount() {
         this.props.dispatch(fetchComments(this.props.tid))
+    }
+
+    rawMarkup(str) {
+        if (!this.md) {
+            this.md = new Remarkable()
+        }
+        var rawMarkup = this.md.render(str);
+        return { __html: rawMarkup };
     }
 
     render() {
@@ -23,7 +32,7 @@ export class CommentList extends Component {
                         {commentList.comments.map((comment, i) =>
                             <div key={i} className="panel panel-default">
                                 <div className="panel-heading">{comment.username}@{comment.created_at}</div>
-                                <div className="panel-body">{comment.content}</div>
+                                <div className="panel-body" dangerouslySetInnerHTML={this.rawMarkup(comment.content)} />
                             </div>
                         )}
                     </div>

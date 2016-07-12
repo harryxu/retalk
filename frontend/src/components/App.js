@@ -41,6 +41,14 @@ export class App extends Component {
                         {children}
                     </div>
                 </div>
+
+                <footer className="footer">
+                    <div className="container">
+                        <p className="text-muted">Retalk System. React Redux Demo.
+                            <a href="https://github.com/harryxu/retalk" target="_blank">Code on github</a>
+                        </p>
+                    </div>
+                </footer>
             </div>
         )
     }
