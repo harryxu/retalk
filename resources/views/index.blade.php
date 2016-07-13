@@ -8,6 +8,10 @@
   <link href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
   <link href="//cdn.bootcss.com/bootstrap-material-design/0.5.10/css/bootstrap-material-design.min.css" rel="stylesheet">
   <link href="//cdn.bootcss.com/bootstrap-material-design/0.5.10/css/ripples.min.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    .container-fluid>.navbar-header { margin-right: 0; }
+  </style>
 </head>
 
 <body>
