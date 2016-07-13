@@ -8,7 +8,7 @@ module.exports = {
     entry: {
         app: './src/index',
         vendor: [
-            'history',
+            'babel-polyfill',
             'react',
             'react-dom',
             'redux',
