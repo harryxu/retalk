@@ -41,7 +41,8 @@ export class TopicList extends Component {
 function mapStateToProps(state) {
     return {
         topics: state.topicList.topics,
-        user: state.user
+        user: state.user,
+        fetching: state.topicList.fetching
     }
 }
 
