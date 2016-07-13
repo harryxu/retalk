@@ -44,10 +44,5 @@ module.exports = {
 
     resolve: {
         extensions: ['', '.js', '.jsx', '.css']
-    },
-
-    postcss: [
-        require('autoprefixer'),
-        require('postcss-nested')
-    ]
+    }
 };
