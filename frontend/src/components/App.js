@@ -20,11 +20,11 @@ export class App extends Component {
                 <div className="header clearfix">
                     <nav className="navbar navbar-info">
                         <div className="container-fluid">
-                            <div class="navbar-header">
+                            <div className="navbar-header pull-left">
                                 <IndexLink className="navbar-brand" to={path()}>Retalk system</IndexLink>
                             </div>
-                            <div className="collapse navbar-collapse">
-                                <p className="navbar-text navbar-right">
+                            <div className="navbar-header pull-right">
+                                <p className="navbar-text">
                                     {user.fetching ? <span>...</span>
                                         : user.name
                                             ? <span>{user.name} | <a href={path('auth/logout')} className="navbar-link">退出</a></span>
