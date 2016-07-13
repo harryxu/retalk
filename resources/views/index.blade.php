@@ -22,7 +22,7 @@
   <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
   <script src="//cdn.bootcss.com/bootstrap-material-design/0.5.10/js/ripples.min.js"></script>
   <script src="//cdn.bootcss.com/bootstrap-material-design/0.5.10/js/material.min.js"></script>
-  {!! Html::script('js/vendor.bundle.js') !!}
+  {!! Html::script('js/vendor.bundle.js'.md5_file(public_path('js/vendor.bundle.js'))) !!}
 
   <script>
     var basePath = '{!! $basepath !!}';
@@ -31,7 +31,7 @@
     $.material.init()
   </script>
 
-  {!! Html::script('js/app.js') !!}
+  {!! Html::script('js/app.js?'.md5_file(public_path('js/app.js'))) !!}
 
 
 </body>
